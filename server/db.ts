@@ -7,12 +7,15 @@ const { Pool } = pg;
 
 // دالة لجلب DATABASE_URL بشكل آمن وديناميكي
 function getDatabaseUrl() {
-  // Try DATABASE_URL first, then look for any variable that might contain the connection string
+  // Try to find the external DATABASE_URL from environment variables
+  // We prioritize the one that doesn't point to localhost if possible, 
+  // but usually DATABASE_URL is the standard.
   const dbUrl = (process.env.DATABASE_URL || "").replace(/["']/g, "").trim();
-  if (!dbUrl) {
-    console.error("❌ [PostgreSQL] DATABASE_URL is MISSING. Check Replit Secrets/Env vars.");
+  
+  if (!dbUrl || dbUrl.includes("localhost") || dbUrl.includes("127.0.0.1")) {
+    console.warn("⚠️ [PostgreSQL] DATABASE_URL points to localhost or is missing. External connection might fail.");
   } else {
-    console.log("✅ [PostgreSQL] DATABASE_URL loaded correctly from environment");
+    console.log("✅ [PostgreSQL] External DATABASE_URL loaded correctly");
   }
   return dbUrl;
 }
