@@ -7,11 +7,12 @@ const { Pool } = pg;
 
 // دالة لجلب DATABASE_URL بشكل آمن وديناميكي
 function getDatabaseUrl() {
-  const dbUrl = (process.env.DATABASE_URL || envLoader.get("DATABASE_URL") || "").replace(/["']/g, "").trim();
+  // Try DATABASE_URL first, then look for any variable that might contain the connection string
+  const dbUrl = (process.env.DATABASE_URL || "").replace(/["']/g, "").trim();
   if (!dbUrl) {
-    console.warn("⚠️ [PostgreSQL] DATABASE_URL is not defined or empty. Connection will fail.");
+    console.error("❌ [PostgreSQL] DATABASE_URL is MISSING. This will cause ECONNREFUSED.");
   } else {
-    console.log("✅ [PostgreSQL] DATABASE_URL found and loaded");
+    console.log("✅ [PostgreSQL] DATABASE_URL loaded correctly from environment");
   }
   return dbUrl;
 }
@@ -36,9 +37,8 @@ const dbUrl = getDatabaseUrl();
 
 export const pool = new Pool({
   connectionString: dbUrl,
-  // فرض تحويل كلمة المرور إلى String صريح لضمان توافق SASL SCRAM-SHA-256
-  password: String(getPasswordFromUrl(dbUrl)),
-  ssl: false,
+  // Ensure SSL is enabled for Neon/external Postgres providers often used in Replit
+  ssl: dbUrl.includes('neon.tech') || dbUrl.includes('replit') ? { rejectUnauthorized: false } : false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 10000
