@@ -10,7 +10,7 @@ function getDatabaseUrl() {
   // Try DATABASE_URL first, then look for any variable that might contain the connection string
   const dbUrl = (process.env.DATABASE_URL || "").replace(/["']/g, "").trim();
   if (!dbUrl) {
-    console.error("❌ [PostgreSQL] DATABASE_URL is MISSING. This will cause ECONNREFUSED.");
+    console.error("❌ [PostgreSQL] DATABASE_URL is MISSING. Check Replit Secrets/Env vars.");
   } else {
     console.log("✅ [PostgreSQL] DATABASE_URL loaded correctly from environment");
   }
