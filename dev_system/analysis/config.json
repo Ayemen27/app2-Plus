@@ -1,0 +1,13 @@
+{
+  "project": "AgentForge 2026",
+  "version": "1.0.0",
+  "scanner_config": {
+    "sast": "semgrep",
+    "sca": "npm-audit",
+    "output_format": "sarif"
+  },
+  "quality_gates": {
+    "max_critical_vulns": 0,
+    "min_coverage": 80
+  }
+}

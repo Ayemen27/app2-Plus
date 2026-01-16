@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>إدارة المشاريع الإنشائية</title>
+    <style>
+      body, html { margin: 0; padding: 0; background: #fff; font-family: system-ui; }
+      #root { width: 100%; min-height: 100vh; }
+      .loading-screen { display: flex; justify-content: center; align-items: center; height: 100vh; }
+      .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-screen">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <script data-cfasync="false">/* Cloudflare Rocket Loader Disable */</script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

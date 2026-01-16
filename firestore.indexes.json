@@ -1,0 +1,23 @@
+{
+  "firestore": {
+    "indexes": [
+      {
+        "collectionGroup": "worker_attendance",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "projectId", "order": "ASCENDING" },
+          { "fieldPath": "attendanceDate", "order": "DESCENDING" }
+        ]
+      },
+      {
+        "collectionGroup": "material_purchases",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "projectId", "order": "ASCENDING" },
+          { "fieldPath": "purchaseDate", "order": "DESCENDING" }
+        ]
+      }
+    ],
+    "fieldOverrides": []
+  }
+}
