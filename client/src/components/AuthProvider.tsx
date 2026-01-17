@@ -40,6 +40,39 @@ export function useAuth() {
   return context;
 }
 
+// ✅ Helper functions لإدارة التوكنات - مركزية وآمنة
+export const getAccessToken = (): string | null => {
+  return typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null;
+};
+
+export const getRefreshToken = (): string | null => {
+  return typeof window !== 'undefined' ? localStorage.getItem('refreshToken') : null;
+};
+
+// ✅ تحديد الرابط الأساسي للـ API بشكل ديناميكي مع دعم الدومين الخارجي
+export const getApiBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    const origin = window.location.origin;
+    // إذا كان المستخدم يتصفح عبر الدومين الرسمي، نستخدمه
+    if (origin.includes('binarjoinanalyticnl.nl')) {
+      return `${origin}/api`;
+    }
+    // إذا كان في Replit، نستخدم دومين Replit
+    if (origin.includes('replit.dev')) {
+      return `${origin}/api`;
+    }
+    // دعم تطبيقات الـ APK والمنصات الأصلية
+    if (origin.startsWith('http://localhost') || origin.startsWith('file://') || origin === 'null') {
+      return import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
+    }
+  }
+  // القيمة الافتراضية (Fallback) للـ APK هي الدومين الرسمي للمشروع
+  const fallbackDomain = import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
+  return fallbackDomain.endsWith('/api') ? fallbackDomain : `${fallbackDomain}/api`;
+};
+
+export const API_BASE_URL = getApiBaseUrl();
+
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -50,15 +83,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const queryClient = useQueryClient();
 
   const isAuthenticated = user !== null;
-
-  // ✅ Helper functions لإدارة التوكنات - مركزية وآمنة
-  const getAccessToken = (): string | null => {
-    return localStorage.getItem('accessToken');
-  };
-
-  const getRefreshToken = (): string | null => {
-    return localStorage.getItem('refreshToken');
-  };
 
   // متغيرات لإدارة Fallback mechanisms
   const [authFailureCount, setAuthFailureCount] = useState(0);
@@ -72,30 +96,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       logout
     });
   }, []); // تشغيل مرة واحدة فقط
-
-  // ✅ تحديد الرابط الأساسي للـ API بشكل ديناميكي مع دعم الدومين الخارجي
-  const getApiBaseUrl = () => {
-    if (typeof window !== 'undefined') {
-      const origin = window.location.origin;
-      // إذا كان المستخدم يتصفح عبر الدومين الرسمي، نستخدمه
-      if (origin.includes('binarjoinanalyticnl.nl')) {
-        return `${origin}/api`;
-      }
-      // إذا كان في Replit، نستخدم دومين Replit
-      if (origin.includes('replit.dev')) {
-        return `${origin}/api`;
-      }
-      // دعم تطبيقات الـ APK والمنصات الأصلية
-      if (origin.startsWith('http://localhost') || origin.startsWith('file://') || origin === 'null') {
-        return import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
-      }
-    }
-    // القيمة الافتراضية (Fallback) للـ APK هي الدومين الرسمي للمشروع
-    const fallbackDomain = import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
-    return fallbackDomain.endsWith('/api') ? fallbackDomain : `${fallbackDomain}/api`;
-  };
-
-  const API_BASE_URL = getApiBaseUrl();
 
   // تهيئة مستخدم الطوارئ الافتراضي
   useEffect(() => {

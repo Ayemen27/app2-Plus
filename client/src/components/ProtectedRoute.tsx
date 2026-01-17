@@ -4,7 +4,7 @@
  */
 
 import { ReactNode } from "react";
-import { useAuth } from "./AuthProvider";
+import { useAuth, API_BASE_URL } from "./AuthProvider";
 import { Redirect } from "wouter";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
