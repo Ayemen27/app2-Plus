@@ -19,3 +19,6 @@ SERVICE_ACCOUNT_KEY.json
 SERVICE_ACCOUNT_KEY.json
 SERVICE_ACCOUNT_KEY.json
 SERVICE_ACCOUNT_KEY.json
+serviceAccountKey.json
+*.key
+.env
