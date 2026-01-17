@@ -24,9 +24,9 @@ print_separator() { echo -e "${BLUE}══════════════�
 print_header() { echo -e "${CYAN}╔══════════════════════════════════════════════════════╗${NC}"; echo -e "${CYAN}║  $1  ║${NC}"; echo -e "${CYAN}╚══════════════════════════════════════════════════════╝${NC}"; }
 
 COMMIT_MESSAGE="${1:-نشر تلقائي $(date '+%Y-%m-%d %H:%M:%S')}"
-REMOTE_APP_DIR="/home/administrator/app2"
-DOMAIN="https://app2.binarjoinanelytic.info"
-REPO_NAME="app2"
+REMOTE_APP_DIR="/home/administrator/app2-Plus"
+DOMAIN="https://app2-Plus.binarjoinanelytic.info"
+REPO_NAME="app2-Plus"
 GITHUB_REPO="https://${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/${REPO_NAME}.git"
 
 SSH_HOST="${SSH_HOST:-}"
@@ -88,7 +88,7 @@ DATABASE_URL='${DATABASE_URL}'
 JWT_ACCESS_SECRET='${JWT_ACCESS_SECRET}'
 JWT_REFRESH_SECRET='${JWT_REFRESH_SECRET}'
 SESSION_SECRET='${SESSION_SECRET}'
-DOMAIN=https://app2.binarjoinanelytic.info"
+DOMAIN=https://app2-Plus.binarjoinanelytic.info"
 
     # التحقق من المنفذ المطلوب للسيرفر الخارجي
     if [[ "$ENV_CONTENT" == *"PORT=6000"* ]]; then

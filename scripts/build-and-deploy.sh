@@ -14,7 +14,7 @@ SSH_HOST="${SSH_HOST}"
 SSH_USER="${SSH_USER}"
 SSH_PORT="${SSH_PORT:-22}"
 SSH_PASSWORD="${SSH_PASSWORD}"
-REMOTE_APP_DIR="/home/administrator/app2"
+REMOTE_APP_DIR="/home/administrator/app2-Plus"
 
 # Logging functions
 log_info() { echo -e "${BLUE}ℹ${NC} $1"; }
@@ -95,7 +95,7 @@ fi
 
 echo ""
 echo "🔨 Building Web App First..."
-export VITE_API_BASE_URL=https://app2.binarjoinanelytic.info
+export VITE_API_BASE_URL=https://app2-Plus.binarjoinanelytic.info
 export NODE_ENV=production
 
 npm run build 2>&1 | tail -10

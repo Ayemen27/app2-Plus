@@ -1,6 +1,6 @@
 /**
  * 🔗 Unified API Endpoints
- * Used by both app2 (Web) and App2-Android (Expo)
+ * Used by both app2-Plus (Web) and App2-Android (Expo)
  */
 
 // ============================================================

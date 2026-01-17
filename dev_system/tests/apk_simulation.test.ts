@@ -22,13 +22,13 @@ describe('APK Environment & Connection Tests', () => {
     const getApiBaseUrl = () => {
       const origin = (global as any).window.location.origin;
       if (origin.startsWith('http://localhost') || origin === 'null') {
-        return 'https://app2.binarjoinanelytic.info/api';
+        return 'https://app2-Plus.binarjoinanelytic.info/api';
       }
       return '/api';
     };
 
     const url = getApiBaseUrl();
-    expect(url).toBe('https://app2.binarjoinanelytic.info/api');
+    expect(url).toBe('https://app2-Plus.binarjoinanelytic.info/api');
   });
 
   it('يجب أن يكون هناك تطابق في هيكلية البيانات بين السيرفر والمحلي', () => {

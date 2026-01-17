@@ -61,7 +61,7 @@ npm run android:clean
 ### 1. الاتصال بالسيرفر
 ```bash
 ssh administrator@93.127.142.144
-cd /home/administrator/app2/android
+cd /home/administrator/app2-Plus/android
 ```
 
 ### 2. بناء APK

@@ -44,7 +44,7 @@ healthRouter.get('/db/info', async (req: Request, res: Response) => {
     res.json({ 
       success: true, 
       database: result.rows[0],
-      message: "متصل بقاعدة بيانات app2data بنجاح" 
+      message: "متصل بقاعدة بيانات app2-Plus-data بنجاح" 
     });
   } catch (error: any) {
     res.status(500).json({ 

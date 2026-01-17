@@ -213,7 +213,7 @@ export class SmartSecretsManager {
             value = envFileVars[secretName];
             console.log(`📋 تم استخدام القيمة الموجودة: ${secretName}`);
           } else {
-            console.log(`⚠️ تحذير: ${secretName} يحتاج قيمة حقيقية لقاعدة بيانات app2data`);
+            console.log(`⚠️ تحذير: ${secretName} يحتاج قيمة حقيقية لقاعدة بيانات app2-Plus-data`);
             console.log(`💡 قم بإعداد رابط قاعدة البيانات الصحيح`);
             value = secretConfig.defaultValue;
           }
@@ -420,7 +420,7 @@ export const smartSecretsManager = SmartSecretsManager.getInstance();
 
 // إضافة دالة مساعدة للحصول على رابط قاعدة البيانات
 export function getDatabaseUrl(): string {
-  // استخدام قاعدة البيانات app2data
+  // استخدام قاعدة البيانات app2-Plus-data
   const url = process.env.DATABASE_URL;
   if (!url) {
     throw new Error('DATABASE_URL غير موجودة في متغيرات البيئة');

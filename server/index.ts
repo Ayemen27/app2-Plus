@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 // اكتشاف البيئة تلقائياً
 const isProduction = process.env.NODE_ENV === 'production' || process.env.REPLIT_ENVIRONMENT === 'production';
 const REPLIT_DOMAIN = process.env.REPLIT_DEV_DOMAIN ? `https://${process.env.REPLIT_DEV_DOMAIN}` : process.env.DOMAIN;
-const PRODUCTION_DOMAIN = process.env.PRODUCTION_DOMAIN || 'https://app2.binarjoinanelytic.info';
+const PRODUCTION_DOMAIN = process.env.PRODUCTION_DOMAIN || 'https://app2-Plus.binarjoinanelytic.info';
 const PORT = Number(process.env.PORT) || (isProduction ? 8080 : 5000);
 
 // ✅ DYNAMIC CORS Configuration

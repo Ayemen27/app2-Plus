@@ -127,9 +127,9 @@ export class EnvironmentLoader {
       if (config.apps && config.apps.length > 0) {
         // البحث عن التطبيق الحالي
         const currentApp = config.apps.find((app: any) => 
-          app.name === 'app2' || 
+          app.name === 'app2-Plus' || 
           app.script?.includes('server/index.js') ||
-          app.cwd?.includes('app2')
+          app.cwd?.includes('app2-Plus')
         ) || config.apps[0];
 
         if (currentApp && currentApp.env) {

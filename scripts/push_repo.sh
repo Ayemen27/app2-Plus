@@ -5,7 +5,7 @@
 
 COMMIT_MESSAGE="${1:-نشر تلقائي $(date '+%Y-%m-%d %H:%M:%S')}"
 # Use the correct repository name from environment or default to app2
-REPO_NAME="app2"
+REPO_NAME="app2-Plus"
 GITHUB_REPO="https://${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/${REPO_NAME}.git"
 
 echo "🚀 Starting Git Push via temporary clone to ${GITHUB_USERNAME}/${REPO_NAME}..."
