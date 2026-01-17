@@ -1,7 +1,7 @@
 {
   "appId": "com.binarjoin.construction.manager",
   "appName": "إدارة المشاريع الإنشائية",
-  "webDir": "dist/client",
+  "webDir": "dist/public",
   "bundledWebRuntime": false,
   "loggingBehavior": "none",
   "android": {
