@@ -95,7 +95,7 @@ fi
 
 echo ""
 echo "🔨 Building Web App First..."
-export VITE_API_BASE_URL=https://app2-Plus.binarjoinanelytic.info
+export VITE_API_BASE_URL=https://binarjoinanalyticnl.nl
 export NODE_ENV=production
 
 npm run build 2>&1 | tail -10

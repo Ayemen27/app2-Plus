@@ -290,7 +290,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`🔄 [Schema] تطبيق المخطط على السيرفر الخارجي للتطبيق: ${appType} في ${timestamp}`);
       
       // محاكاة استدعاء السيرفر الخارجي
-      const externalServerUrl = process.env.EXTERNAL_SERVER_URL || 'https://app2-Plus.binarjoinanelytic.info';
+      const externalServerUrl = process.env.EXTERNAL_SERVER_URL || 'https://binarjoinanalyticnl.nl';
       
       console.log(`📡 [Schema] محاولة الاتصال بـ: ${externalServerUrl}`);
       console.log(`✅ [Schema] تم تطبيق المخطط بنجاح على السيرفر الخارجي`);
@@ -346,7 +346,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // 4. الاتصال بالسيرفر الخارجي
       logs.push({ timestamp: new Date().toLocaleTimeString('ar-SA'), message: "🔗 الاتصال بالسيرفر الخارجي...", type: "info" });
-      const PRODUCTION_DOMAIN = 'https://app2-Plus.binarjoinanelytic.info';
+      const PRODUCTION_DOMAIN = 'https://binarjoinanalyticnl.nl';
       const currentExternalUrl = process.env.EXTERNAL_SERVER_URL || PRODUCTION_DOMAIN;
       const externalToken = process.env.EXTERNAL_SERVER_TOKEN || '';
       

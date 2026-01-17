@@ -78,8 +78,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (typeof window !== 'undefined') {
       const origin = window.location.origin;
       // إذا كان المستخدم يتصفح عبر الدومين الرسمي، نستخدمه
-      if (origin.includes('binarjoinanelytic.info')) {
-        return `${origin.replace('app2', 'app2-Plus')}/api`;
+      if (origin.includes('binarjoinanalyticnl.nl')) {
+        return `${origin}/api`;
       }
       // إذا كان في Replit، نستخدم دومين Replit
       if (origin.includes('replit.dev')) {
@@ -87,11 +87,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
       // دعم تطبيقات الـ APK والمنصات الأصلية
       if (origin.startsWith('http://localhost') || origin.startsWith('file://') || origin === 'null') {
-        return import.meta.env.VITE_API_BASE_URL || 'https://app2-Plus.binarjoinanelytic.info/api';
+        return import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
       }
     }
     // القيمة الافتراضية (Fallback) للـ APK هي الدومين الرسمي للمشروع
-    const fallbackDomain = import.meta.env.VITE_API_BASE_URL || 'https://app2-Plus.binarjoinanelytic.info/api';
+    const fallbackDomain = import.meta.env.VITE_API_BASE_URL || 'https://binarjoinanalyticnl.nl/api';
     return fallbackDomain.endsWith('/api') ? fallbackDomain : `${fallbackDomain}/api`;
   };
 

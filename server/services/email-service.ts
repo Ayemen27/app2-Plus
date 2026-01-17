@@ -117,11 +117,11 @@ function getDynamicDomain(req?: any): string {
   // في بيئة التطوير
   if (process.env.NODE_ENV === 'development') {
     console.log('🌐 [EmailService] استخدام localhost للتطوير');
-    return process.env.PRODUCTION_DOMAIN ? process.env.PRODUCTION_DOMAIN.replace(/^(https?:\/\/)/, '') : 'app2-Plus.binarjoinanelytic.info';
+    return process.env.PRODUCTION_DOMAIN ? process.env.PRODUCTION_DOMAIN.replace(/^(https?:\/\/)/, '') : 'binarjoinanalyticnl.nl';
   }
   
   // القيم الافتراضية حسب البيئة
-  const defaultDomain = process.env.PRODUCTION_DOMAIN ? process.env.PRODUCTION_DOMAIN.replace(/^(https?:\/\/)/, '') : 'app2-Plus.binarjoinanelytic.info';
+  const defaultDomain = process.env.PRODUCTION_DOMAIN ? process.env.PRODUCTION_DOMAIN.replace(/^(https?:\/\/)/, '') : 'binarjoinanalyticnl.nl';
   
   console.log('🌐 [EmailService] استخدام القيمة الافتراضية:', defaultDomain);
   return defaultDomain;
