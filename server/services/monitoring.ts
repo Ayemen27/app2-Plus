@@ -30,7 +30,8 @@ export class MonitoringService {
   private async checkServiceStatus(): Promise<string> {
     try {
       // In production, this would check actual service health
-      const port = process.env.PORT || '5000';
+      const isProduction = process.env.NODE_ENV === 'production' || process.env.REPLIT_ENVIRONMENT === 'production';
+      const port = process.env.PORT || (isProduction ? '8080' : '5000');
       const healthCheckUrl = process.env.HEALTH_CHECK_URL || `http://localhost:${port}/api/health`;
       const response = await fetch(healthCheckUrl).catch(() => null);
       return response?.ok ? "healthy" : "unhealthy";

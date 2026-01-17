@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html'], ['list']],
   use: {
-    baseURL: 'http://localhost:5000',
+    baseURL: `http://localhost:${process.env.PORT || (process.env.NODE_ENV === 'production' ? 8080 : 5000)}`,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
